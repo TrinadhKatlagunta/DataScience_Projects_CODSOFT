@@ -20,7 +20,7 @@ To download the input data file, follow these steps:
 
 1. Click on the following link:
 
-   - [Grocery Items CSV](https://raw.githubusercontent.com/TrinadhKatlgunta/CODSOFT2/main/Task3_IrisFlowerClassification/IRIS.csv)
+   - [IRIS CSV](https://raw.githubusercontent.com/TrinadhKatlgunta/CODSOFT2/main/Task3_IrisFlowerClassification/IRIS.csv)
 
 2. Once the file opens in your browser, right-click on the page and select "Save Page As" or "Save As" to save the file to your computer.
 
