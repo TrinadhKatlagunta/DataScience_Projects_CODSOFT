@@ -12,7 +12,11 @@ Before running the program, please ensure you follow these instructions:
 
 3. **Upload Dataset to Google Drive**: Once downloaded, upload the `creditcard.csv` file to a folder in your Google Drive.
 
-4. **Run the Program**: Execute the provided code in a Google Colab notebook to train and evaluate the logistic regression model for fraud detection.
+4. **Run the Program**:
+   - After uploading the dataset to Google Drive, open Google Colab.
+   - Create a new notebook or use an existing one.
+   - Upload the `CreditCardFraud.py` script to your Google Colab environment.
+   - Run the `CreditCardFraud.py` script in Google Colab to execute the fraud detection model.
 
 ## Download Dataset
 
@@ -44,90 +48,17 @@ After downloading the dataset, follow these steps to upload it to Google Drive:
 1. **Open Google Colab**:
    - Go to [Google Colab](https://colab.research.google.com/) in your web browser.
 
-2. **Create a New Notebook**:
-   - Click on "File" > "New Notebook".
+2. **Upload `CreditCardFraud.py`**:
+   - Upload the `CreditCardFraud.py` script to your Google Colab environment.
 
-3. **Copy and Paste the Code**:
-   - Copy the code provided below and paste it into a cell in your Colab notebook:
+3. **Run `CreditCardFraud.py`**:
+   - Execute the `CreditCardFraud.py` script in Google Colab to train and evaluate the logistic regression model for fraud detection.
 
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
-from google.colab import drive
+## View Classification
 
-# Step 1: Mount Google Drive
-drive.mount('/content/drive')
+After successful execution of the program, you will see:
+- The results of the fraud detection model based on the uploaded dataset.
 
-# Step 2: Provide the path to your file in Google Drive
-file_path = '/content/drive/My Drive/CreditCardFraud/creditcard.csv'  # Update this path
-file = pd.read_csv(file_path)
+## Note
 
-# Step 3: Data Analysis and Model Training
-# Display the first 10 rows of the dataset
-print(file.head(10))
-
-# Display a summary of the dataset
-print(file.describe())
-
-# Check for missing values
-print(file.isnull().sum())
-
-# Display the class distribution
-print(file['Class'].value_counts())
-
-# Separate the dataset into normal and fraud classes
-normal = file[file['Class'] == 0]
-fraud = file[file['Class'] == 1]
-
-# Display the shape of normal and fraud datasets
-print(normal.shape)
-print(fraud.shape)
-
-# Describe the 'Amount' feature for normal and fraud classes
-print(normal['Amount'].describe())
-print(fraud['Amount'].describe())
-
-# Sample the normal class to match the number of fraud cases
-normal_sample = normal.sample(n=len(fraud), random_state=2)
-
-# Combine the normal sample and fraud dataset
-new_file = pd.concat([normal_sample, fraud], axis=0)
-
-# Display the first 10 rows of the new balanced dataset
-print(new_file.head(10))
-
-# Display the class distribution of the new balanced dataset
-print(new_file['Class'].value_counts())
-
-# Split the dataset into features and target variable
-X = new_file.drop(columns='Class', axis=1)
-Y = new_file['Class']
-
-# Split the dataset into training and testing sets
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, stratify=Y, random_state=2)
-
-# Initialize and train the Logistic Regression model
-model = LogisticRegression(max_iter=1000)
-model.fit(X_train, Y_train)
-
-# Make predictions on the training set
-X_train_prediction = model.predict(X_train)
-training_data_accuracy = accuracy_score(X_train_prediction, Y_train) * 100
-print(f"Training Data Accuracy: {training_data_accuracy:.2f}%")
-
-# Make predictions on the testing set
-X_test_prediction = model.predict(X_test)
-test_data_accuracy = accuracy_score(X_test_prediction, Y_test) * 100
-print(f"Test Data Accuracy: {test_data_accuracy:.2f}%")
-
-# Display the confusion matrix
-print("Confusion Matrix:")
-print(confusion_matrix(Y_test, X_test_prediction))
-
-# Display the classification report
-print("\nClassification Report:")
-print(classification_report(Y_test, X_test_prediction))
+Please note that this program is designed to run in Google Colab. Make sure you have a stable internet connection and sufficient resources to run the program successfully.
