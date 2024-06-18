@@ -1,10 +1,9 @@
 # Credit Card Fraud Detection
-
 # This project demonstrates how to detect credit card fraud using a logistic regression model.
-# The dataset used is a publicly available dataset of credit card transactions, where the 
+# The dataset used is a publicly available dataset of credit card transactions, where the
 # 'Class' column indicates whether a transaction is fraudulent (1) or not (0).
 
-# Required libraries
+# Import necessary libraries
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -24,15 +23,19 @@ file = pd.read_csv(file_path)
 
 # Step 3: Data Exploration
 # Display the first 10 rows of the dataset to get an initial understanding of the data.
+print("First 10 rows of the dataset:")
 print(file.head(10))
 
 # Display a summary of the dataset including statistics like mean, standard deviation, etc.
+print("\nSummary statistics of the dataset:")
 print(file.describe())
 
 # Check for missing values in the dataset.
+print("\nChecking for missing values:")
 print(file.isnull().sum())
 
 # Display the class distribution to understand the imbalance in the dataset.
+print("\nClass distribution:")
 print(file['Class'].value_counts())
 
 # Step 4: Data Preprocessing
@@ -41,11 +44,15 @@ normal = file[file['Class'] == 0]
 fraud = file[file['Class'] == 1]
 
 # Display the shape of normal and fraud datasets to see the imbalance.
+print("\nShape of normal transactions:")
 print(normal.shape)
+print("Shape of fraud transactions:")
 print(fraud.shape)
 
 # Describe the 'Amount' feature for normal and fraud classes.
+print("\nAmount statistics for normal transactions:")
 print(normal['Amount'].describe())
+print("\nAmount statistics for fraud transactions:")
 print(fraud['Amount'].describe())
 
 # Step 5: Balancing the Dataset
@@ -56,9 +63,11 @@ normal_sample = normal.sample(n=len(fraud), random_state=2)
 new_file = pd.concat([normal_sample, fraud], axis=0)
 
 # Display the first 10 rows of the new balanced dataset.
+print("\nFirst 10 rows of the balanced dataset:")
 print(new_file.head(10))
 
 # Display the class distribution of the new balanced dataset to ensure it is balanced.
+print("\nClass distribution of the balanced dataset:")
 print(new_file['Class'].value_counts())
 
 # Step 6: Splitting the Data
@@ -78,7 +87,7 @@ model.fit(X_train, Y_train)
 # Make predictions on the training set.
 X_train_prediction = model.predict(X_train)
 training_data_accuracy = accuracy_score(X_train_prediction, Y_train) * 100
-print(f"Training Data Accuracy: {training_data_accuracy:.2f}%")
+print(f"\nTraining Data Accuracy: {training_data_accuracy:.2f}%")
 
 # Make predictions on the testing set.
 X_test_prediction = model.predict(X_test)
@@ -86,7 +95,7 @@ test_data_accuracy = accuracy_score(X_test_prediction, Y_test) * 100
 print(f"Test Data Accuracy: {test_data_accuracy:.2f}%")
 
 # Display the confusion matrix to see the performance of the model in terms of true/false positives/negatives.
-print("Confusion Matrix:")
+print("\nConfusion Matrix:")
 print(confusion_matrix(Y_test, X_test_prediction))
 
 # Display the classification report to see detailed metrics like precision, recall, and F1-score.
