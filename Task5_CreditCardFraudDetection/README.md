@@ -54,7 +54,7 @@ After downloading the dataset, follow these steps to upload it to Google Drive:
 3. **Run `CreditCardFraud.py`**:
    - Execute the `CreditCardFraud.py` script in Google Colab to train and evaluate the logistic regression model for fraud detection.
 
-## View Classification
+## View Results
 
 After successful execution of the program, you will see:
 - The results of the fraud detection model based on the uploaded dataset.
