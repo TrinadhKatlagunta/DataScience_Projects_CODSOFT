@@ -23,7 +23,7 @@ Before running the program, please ensure you follow these instructions:
 To download the dataset, follow these steps:
 
 1. Go to the following link: 
-   - [Credit Card Fraud Detection Dataset](https://www.kaggle.com/datasets/adrianmcmahon/imdb-india-movies)
+   - [Credit Card Fraud Detection Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud?resource=download)
 
 2. Download the `creditcard.csv` file from Kaggle.
 
